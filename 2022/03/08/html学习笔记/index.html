@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Html,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、html标签 【结构】hyperText markup language 超文本标记语言">
+<meta name="keywords" content="Html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="渡一教育,html+css 公开课">
+<meta property="og:url" content="http://yoursite.com/2022/03/08/html学习笔记/index.html">
+<meta property="og:site_name" content="Zhou">
+<meta property="og:description" content="1、html标签 【结构】hyperText markup language 超文本标记语言">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-24T14:27:21.052Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="渡一教育,html+css 公开课">
+<meta name="twitter:description" content="1、html标签 【结构】hyperText markup language 超文本标记语言">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":5,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2022/03/08/html学习笔记/">
+
+
+
+
+
+  <title>渡一教育,html+css 公开课 | Zhou</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhou</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Android工程师</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-hao123">
+          <a href="/hao123/" rel="section">
+            
+            导航
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/03/08/html学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="七水">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/qishui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">渡一教育,html+css 公开课</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-03-08T16:17:59+08:00">
+                2022-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Html/" itemprop="url" rel="index">
+                    <span itemprop="name">Html</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2022/03/08/html学习笔记/" class="leancloud_visitors" data-flag-title="渡一教育,html+css 公开课">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、html标签-【结构】"><a href="#1、html标签-【结构】" class="headerlink" title="1、html标签 【结构】"></a>1、html标签 【结构】</h2><p>hyperText markup language 超文本标记语言</p>
+<a id="more"></a>
+<pre><code>&lt;html lang=&quot;en&quot;&gt;
+   &lt;head&gt;
+         &lt;meta charset=&quot;utf-8&quot;&gt;
+         &lt;title&gt;&lt;/title&gt;
+         &lt;meta content=&quot;qishui&quot; name=&quot;keywords&quot;&gt;
+         &lt;meta content=&quot;学html&quot; name=&quot;description&quot;&gt;
+   &lt;/head&gt;
+
+
+   &lt;body&gt;
+
+      &lt;p&gt;123456&lt;/p&gt;
+
+      &lt;p&gt;123456&lt;/p&gt;
+
+      &lt;h1&gt;&lt;/h1&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;h3&gt;&lt;/h3&gt;
+      &lt;h4&gt;&lt;/h4&gt;
+      &lt;h5&gt;&lt;/h5&gt;
+      &lt;h6&gt;&lt;/h6&gt;
+
+      &lt;strong&gt;&lt;/strong&gt;
+      &lt;em&gt;&lt;/em&gt;
+
+
+      &lt;strong&gt;&lt;em&gt;&lt;/em&gt;&lt;/strong&gt;
+
+
+      &lt;del&gt;&lt;/del&gt;
+
+      &lt;address&gt;&lt;/address&gt;
+
+      &lt;span&gt;&lt;span&gt;
+
+      &lt;div&gt;&lt;div&gt;
+
+        中文1  中文2                    中文3
+
+      中文4  
+
+
+      sssssssssssssssssssssssss22222222222222222
+
+
+      sssssssss sssssssss sssssssssssssss
+
+      中文1&amp;nbsp;&amp;nbsp;&amp;nbsp;中文2中文&amp;nbsp;&amp;nbsp;&amp;nbsp;1中文1
+
+      学习&amp;lt;div&amp;gt;
+
+      &lt;br&gt;
+
+      &lt;br&gt;
+
+      &lt;br/&gt;
+
+      &lt;br/&gt;
+
+
+      &lt;ol type=&quot;1&quot; reversed=&quot;reversed&quot; strat=&quot;2&quot;&gt;
+         &lt;li&gt;apple&lt;/li&gt;
+          &lt;li&gt;orange&lt;/li&gt;
+           &lt;li&gt;banana&lt;/li&gt;
+      &lt;/ol&gt;
+
+       &lt;ul type=&quot;disc&quot; id=&quot;select_list&quot;&gt;
+         &lt;li&gt;apple&lt;/li&gt;
+          &lt;li&gt;orange&lt;/li&gt;
+           &lt;li&gt;banana&lt;/li&gt;
+      &lt;/ul&gt;
+
+
+      &lt;img src=&quot;&quot; alt=&quot;&quot; title=&quot;&quot;&gt;&lt;/img&gt;
+
+
+      &lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;
+
+       &lt;a href=&quot;#select_list&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;
+
+
+       &lt;from method=&quot;get/post&quot; action=&quot;#&quot;&gt;
+
+               &lt;p&gt;
+             用户名：  &lt;input type=&quot;text&quot; name=&quot;userName&quot;/&gt;
+
+             &lt;/p&gt;
+             &lt;p&gt;
+              密码：   &lt;input type=&quot;password&quot; name=&quot;password&quot;/&gt;
+             &lt;/p&gt;
+
+    &lt;p&gt;
+                &lt;input type=&quot;submit&quot; value=&quot;login&quot;/&gt;
+                &lt;/p&gt;
+
+                   &lt;p&gt;
+
+         苹果：&lt;input type=&quot;radio&quot; name=&quot;food&quot; value=&quot;1&quot; check=&quot;check&quot;/&gt;
+         香蕉：&lt;input type=&quot;radio&quot; name=&quot;food&quot; value=&quot;2&quot;/&gt;
+         梨子：&lt;input type=&quot;radio&quot; name=&quot;food&quot; value=&quot;3&quot;/&gt;
+   &lt;/p&gt;
+
+    &lt;p&gt;
+
+         苹果：&lt;input type=&quot;check&quot; name=&quot;food&quot; value=&quot;1&quot; checked=&quot;checked&quot;/&gt;
+         香蕉：&lt;input type=&quot;check&quot; name=&quot;food&quot; value=&quot;2&quot;/&gt;
+         梨子：&lt;input type=&quot;check&quot; name=&quot;food&quot; value=&quot;3&quot;/&gt;
+   &lt;/p&gt;
+
+       &lt;/from&gt;
+
+
+       &lt;select name=&quot;province&quot;&gt;
+
+             &lt;option value=&quot;bj&quot; selected=&quot;selected&quot;&gt;北京&lt;option&gt;
+             &lt;option value=&quot;sz&quot;&gt;深圳&lt;option&gt;
+             &lt;option value=&quot;sh&quot;&gt;上海&lt;option&gt;
+
+       &lt;/select&gt;
+
+       &lt;!--  注释，表明作用，调试  //--&gt;
+
+
+   &lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><p>lang: 告诉爬虫，网站关于什么的，en,zh </p>
+<p>meta：单标签，charset=”utf-8” 防止乱码;keywords关键词，description描述。</p>
+<p>title: 标题</p>
+<p>head：网页不可见，浏览器识别作用</p>
+<p>body:网页显示</p>
+<p>p： 段落标签</p>
+<p>h:  标题标签，独自一段，字体加大，加粗 ；h1最大，依次减小，h6最小</p>
+<p>strong: 加粗</p>
+<p>em: 斜体</p>
+<p>del: 删除线</p>
+<p>address: 地址标签，成段，加粗</p>
+<p>span:  行级元素，分块，结构化，方便维护，可以操作内部元素一起改变；</p>
+<p>div:   块级元素，分块，结构化，方便维护，以操作内部元素一起改变；</p>
+<p>空格： 文字分隔符，切割，多个，换行空格 将合并在一起，保留一个空格</p>
+<p>&nbsp;  空格</p>
+<p>&lt; 小于</p>
+<p>&gt; 大于</p>
+<p>br： 单个即可，单标签 </p>
+<p>hr: 单标签</p>
+<p>ol: 有序列表,type 默认 1，按1,2,3,4，方式；可选，a,A,i,I 类型 ；reversed 倒序；序号以第2个开始标序号。</p>
+<p>ul: 无序列表，只有一个type属性，默认实心圆disc； square 方形 ；circle 圆圈。常常用来作为导航栏功能。</p>
+<p>img:显示图片,src，加载地址，网络url地址, 相对地址，绝对路径,alt 描述文字，加载不出来显示,title,图片提示符。</p>
+<p>a: 超链接，href,链接地址，可以放图片，css，文字,target为_blank时，在新开页面打开链接，默认本页面;<br>href,#id,在页面内滑动。可用于打电话，tel： ,发邮件 mailto:,协议限定符，javascript：</p>
+<p>from： 表单，get,post方式提交，action，提交地方。<br>input: 输入框，type=”text”内容，type=”password”密码框，type=”submit”,提交数据；<br>radio，name一致构成单选框功能,value 实际值，type=”check” 多选框, checked=”checked” 默认选择 。</p>
+<p>select： 下拉框，option,选项值,默认选择selected。</p>
+<p>行级元素 inline：内容决定元素所在位置，不可以通过css改变宽高；</p>
+<pre><code>span em strong  a del
+</code></pre><p>块级元素 block ： 独占一行，可以通过css改变宽高</p>
+<pre><code>div p from ul li address
+</code></pre><p>行级块元素 inline-block： 内容决定元素所在位置，可以通过css改变宽高</p>
+<pre><code>img
+</code></pre><p>可通过css display修改属性</p>
+<h2 id="2、css-【样式】"><a href="#2、css-【样式】" class="headerlink" title="2、css 【样式】"></a>2、css 【样式】</h2><p>1、引入css</p>
+<p>行间样式，放在标签里面<div style="with=100px;"></div></p>
+<p>页面级样式,在head里<style><br>       div{</p>
+<pre><code>}
+</code></pre><p> </style></p>
+<p> 外部文件，,在head里引入css文件,异步执行，边下载，变渲染</p>
+<link rel="stylesheet" type="text/css" href="xx.css">
+
+<p>2、定位元素，选择器</p>
+<pre><code>&lt;style&gt;
+
+  *{
+
+  }
+   #one{
+
+   }
+
+   .china{
+
+   }
+   .usa{
+
+   }
+   span{
+
+   }
+
+   [one]{}
+
+   div span{
+
+   }
+
+   div-&gt;em{
+
+   }
+
+   &lt;!--中间不分割--&gt;
+   div.test{
+   }
+
+
+ &lt;/style&gt;
+</code></pre><p>id选择器，唯一性 </p>
+<div id="one"></div>
+
+<p>类选择器,可以选择多个类</p>
+<div class="china"></div>
+
+<div class="china usa"></div>
+
+<p>标签选择器,针对于所有同类便签</p>
+<p><span></span></p>
+<p>通配器 *，针对所有标签，all</p>
+<p>属性选择器(放入ID名)</p>
+<p>[one]{</p>
+<p>}</p>
+<p>父子选择器，派生选择器,中间可用其他选择器替代，间接也可作用</p>
+<div><br>   <span></span><br></div>
+
+
+<p>直接子元素选择器,间接无效</p>
+<div><br>   <em></em><br>   <span><br>   <em></em><br>   </span><br></div>
+
+
+<p>并列选择器</p>
+<p>div.test{</p>
+<p>}</p>
+<div calss="test"><br><br></div>
+
+
+<p>分组选择器，对相同元素分组;可用来功能组装</p>
+<p>em,<br>span{</p>
+<p>}</p>
+<p>  <em></em><br>   <span><br>   </span></p>
+<p>伪类选择器</p>
+<p>   a::hover{</p>
+<p>   }</p>
+<p>   p::hover{</p>
+<p>   }</p>
+<p>权重,越大，优先级越高。</p>
+<p>！important &gt; 行间样式&gt;id &gt; class|属性选择器| &gt; 标签|伪元素 &gt; 通配器</p>
+<p>无限大，1000,100,10，1，0</p>
+<p>3、css内容</p>
+<pre><code>font-size 字体大小，默认16px,高。
+
+font-weight: bolder ; 字体加粗，100 200 ... 900 没有单位
+
+font-style: italic ; 字体样式，斜体
+
+font-family: arial; 字体
+
+color: red; #ff0000; rgb(255,255,255,0);
+
+border: 1px solid black; 边框宽度，样式实线，dotted dashed ;边框颜色;
+
+text-align: left right center;内容对其方式
+
+line-height:200px ;单行文本高度，容器高度等于line-height，垂直居中
+
+text-indent: 2em;首行缩进,两个字体大小，相对单位。
+
+text-decoration: none; 删除线，underline,显示下划线 ，overline 上面
+
+cursor: 鼠标样式，point,help等，鼠标移动到元素显示
+
+display: inline block inline-block
+</code></pre><h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>TODO: 待总结</p>
+<h2 id="JavaScript【行为】"><a href="#JavaScript【行为】" class="headerlink" title="JavaScript【行为】"></a>JavaScript【行为】</h2><p>TODO: 待学习</p>
+<h2 id="a作为锚点"><a href="#a作为锚点" class="headerlink" title="a作为锚点"></a>a作为锚点</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;超链接应用之锚点&lt;/title&gt;
+
+    &lt;style&gt;
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+    }
+      #content1{
+          height: 1000px;
+          background-color: #99CC00;
+      }
+
+    #content2{
+        height: 1500px;
+        background-color: #11CC00;
+    }
+
+    #test{
+        position: fixed;
+        right: 5%;
+        bottom: 5%;
+        background-color: #90a2bc;
+        color: red;
+    }
+    ul{
+        padding: 20px;
+    }
+    ul li{
+        margin: 10px;
+    }
+
+    a:hover{
+        color: yellow;
+    }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;超链接应用之锚点&lt;/h2&gt;
+&lt;p id=&quot;one&quot;&gt;第一章节&lt;/p&gt;
+哈哈哈哈哈哈哈哈哈哈或或或或或或或或
+&lt;div id=&quot;content1&quot;&gt;&lt;/div&gt;
+&lt;p id=&quot;two&quot;&gt;第二章节&lt;/p&gt;
+呃呃呃呃呃呃呃呃呃呃呃呃鹅鹅鹅鹅鹅鹅饿
+&lt;div id=&quot;content2&quot;&gt;&lt;/div&gt;
+
+&lt;div id=&quot;test&quot;&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#one&quot;&gt;第一章节&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#two&quot;&gt;第二章节&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="ul-作为导航栏例子"><a href="#ul-作为导航栏例子" class="headerlink" title="ul 作为导航栏例子"></a>ul 作为导航栏例子</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;ul导航&lt;/title&gt;
+
+    &lt;style&gt;
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    ul{
+        list-style: none;
+    }
+    ul li{
+        float: left;
+        margin: 10px;
+
+    }
+    a{
+        text-decoration: none;
+        color: #f42;
+    }
+
+    a:hover{
+        color: #fff;
+        background: #f42;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新款连衣裙&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;四件套&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;潮流T恤&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;时尚女鞋&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;短裤&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;半身裙&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;男士外套&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;墙纸&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;行车记录仪&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+border应用，三角形处理，圆形
+---
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+
+    &lt;style&gt;
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        width: 0;
+        height: 0;
+        border: 150px solid black;
+        border-bottom-color: red;
+        border-top-color: #99CC00;
+        border-left-color: #00a4ac;
+        border-right-color: #555555;
+    }
+
+    p{
+        width: 300px;
+        height:300px;
+        border-radius: 150px;
+        background-color: red;
+    }
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexin.png" alt="七水 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="七水 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Html/" rel="tag"># Html</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/02/12/高三岁/" rel="next" title="独家回忆">
+                <i class="fa fa-chevron-left"></i> 独家回忆
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/03/08/SpringBoot打包/" rel="prev" title="Spring Boot 打包">
+                Spring Boot 打包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/qishui.jpg" alt="七水">
+            
+              <p class="site-author-name" itemprop="name">七水</p>
+              <p class="site-description motion-element" itemprop="description">莫道君行早 更有早行人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+
+          
+
+
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、html标签-【结构】"><span class="nav-number">1.</span> <span class="nav-text">1、html标签 【结构】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、css-【样式】"><span class="nav-number">2.</span> <span class="nav-text">2、css 【样式】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒模型"><span class="nav-number">3.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript【行为】"><span class="nav-number">4.</span> <span class="nav-text">JavaScript【行为】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a作为锚点"><span class="nav-number">5.</span> <span class="nav-text">a作为锚点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ul-作为导航栏例子"><span class="nav-number">6.</span> <span class="nav-text">ul 作为导航栏例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">七水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dMMmhdnJssUs5BAt2iEz21Hc-gzGzoHsz", "DUGbxFmv8YAeFzBvPxV1pQEl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ButterKnife,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介ButterKnife 用于绑定事件，绑定资源，简化代码，提升开发效率。 使用A:配套插件首先安装Android ButterKnife Zelezny插件，如果在鼠标移动到布局文件上， 点右键没有出现Generate ButterKnife Injections,那么就可能是没有依赖库ButterKnife。">
+<meta name="keywords" content="ButterKnife">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ButterKnife 【黄油刀】学习使用">
+<meta property="og:url" content="http://yoursite.com/2018/04/10/黄油刀学习使用/index.html">
+<meta property="og:site_name" content="Zhou">
+<meta property="og:description" content="简介ButterKnife 用于绑定事件，绑定资源，简化代码，提升开发效率。 使用A:配套插件首先安装Android ButterKnife Zelezny插件，如果在鼠标移动到布局文件上， 点右键没有出现Generate ButterKnife Injections,那么就可能是没有依赖库ButterKnife。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-08T10:03:35.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ButterKnife 【黄油刀】学习使用">
+<meta name="twitter:description" content="简介ButterKnife 用于绑定事件，绑定资源，简化代码，提升开发效率。 使用A:配套插件首先安装Android ButterKnife Zelezny插件，如果在鼠标移动到布局文件上， 点右键没有出现Generate ButterKnife Injections,那么就可能是没有依赖库ButterKnife。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":5,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/10/黄油刀学习使用/">
+
+
+
+
+
+  <title>Android ButterKnife 【黄油刀】学习使用 | Zhou</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhou</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Android工程师</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-hao123">
+          <a href="/hao123/" rel="section">
+            
+            导航
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/黄油刀学习使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="七水">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/qishui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android ButterKnife 【黄油刀】学习使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T00:00:00+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/10/黄油刀学习使用/" class="leancloud_visitors" data-flag-title="Android ButterKnife 【黄油刀】学习使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><pre><code>ButterKnife 用于绑定事件，绑定资源，简化代码，提升开发效率。
+</code></pre><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="A-配套插件"><a href="#A-配套插件" class="headerlink" title="A:配套插件"></a>A:配套插件</h2><pre><code>首先安装Android ButterKnife Zelezny插件，如果在鼠标移动到布局文件上，
+点右键没有出现Generate ButterKnife Injections,那么就可能是没有依赖库ButterKnife。
+</code></pre><a id="more"></a>
+<h2 id="B-依赖"><a href="#B-依赖" class="headerlink" title="B:依赖"></a>B:依赖</h2><pre><code>implementation &apos;com.jakewharton:butterknife:8.8.1&apos;
+annotationProcessor &apos;com.jakewharton:butterknife-compiler:8.8.1&apos;
+</code></pre><p>i:在Activity中使用</p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.main_tv0)
+    TextView mainTv0;
+    @BindView(R.id.main_tv1)
+    TextView mainTv1;
+    @BindView(R.id.main_tv2)
+    TextView mainTv2;
+    @BindView(R.id.main_tv3)
+    TextView mainTv3;
+    @BindView(R.id.main_btn0)
+    Button mainBtn0;
+    @BindView(R.id.main_btn1)
+    Button mainBtn1;
+    @BindView(R.id.main_btn2)
+    Button mainBtn2;
+    @BindView(R.id.main_ll)
+    LinearLayout mainLl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        initEvent();
+    }
+
+    private void initEvent() {
+
+        mainTv0.setText(&quot;100&quot;);
+        mainTv1.setText(&quot;101&quot;);
+        mainTv2.setText(&quot;102&quot;);
+        mainTv3.setText(&quot;103&quot;);
+
+    }
+
+    @OnClick({R.id.main_btn0, R.id.main_btn1, R.id.main_btn2})
+    void click(View view) {
+
+        switch (view.getId()) {
+            case R.id.main_btn0:
+                Toast.makeText(this, &quot;main_btn0&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn1:
+                Toast.makeText(this, &quot;main_btn1&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn2:
+                Toast.makeText(this, &quot;main_btn2&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    @OnLongClick(R.id.main_ll)
+    boolean clickLinear() {
+        Toast.makeText(this, &quot;main_ll&quot;, Toast.LENGTH_SHORT).show();
+        return true;
+    }
+}
+</code></pre><blockquote>
+<p>在布局文件上点击Generate ButterKnife Injections就可以生成相关代码。</p>
+</blockquote>
+<blockquote>
+<p>注意  ButterKnife.bind(this);在加载布局之后，控件不能设置private或者static</p>
+</blockquote>
+<p>ii:在fragment中使用</p>
+<pre><code>public class MainFragment extends Fragment {
+
+    @BindView(R.id.main_tv0)
+    TextView mainTv0;
+    @BindView(R.id.main_tv1)
+    TextView mainTv1;
+    @BindView(R.id.main_tv2)
+    TextView mainTv2;
+    @BindView(R.id.main_tv3)
+    TextView mainTv3;
+    @BindView(R.id.main_btn0)
+    Button mainBtn0;
+    @BindView(R.id.main_btn1)
+    Button mainBtn1;
+    @BindView(R.id.main_btn2)
+    Button mainBtn2;
+    Unbinder unbinder;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_main, null);
+
+        unbinder = ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        initEvent();
+    }
+
+    private void initEvent() {
+
+        mainTv0.setText(&quot;fg100&quot;);
+        mainTv1.setText(&quot;fg101&quot;);
+        mainTv2.setText(&quot;fg102&quot;);
+        mainTv3.setText(&quot;fg103&quot;);
+
+
+    }
+
+
+    @OnClick({R.id.main_btn0, R.id.main_btn1, R.id.main_btn2})
+    void click(View view) {
+
+        switch (view.getId()) {
+            case R.id.main_btn0:
+                Toast.makeText(getActivity(), &quot;fg_main_btn0&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn1:
+                Toast.makeText(getActivity(), &quot;fg_main_btn1&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn2:
+                Toast.makeText(getActivity(), &quot;fg_main_btn2 去绑定资源&quot;, Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getActivity(), SecondActivity.class));
+
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+}
+</code></pre><blockquote>
+<p>使用插件可以一键生成，但是需要注意的是</p>
+</blockquote>
+<blockquote>
+<p>unbinder = ButterKnife.bind(this, view);绑定布局，其中this不能替换为getActivity()<br>unbinder.unbind();在销毁的时候解除绑定。</p>
+</blockquote>
+<p>iii:绑定view</p>
+<pre><code>public class ViewHolder {
+
+    @BindView(R.id.main_tv0)
+    TextView mainTv0;
+    @BindView(R.id.main_tv1)
+    TextView mainTv1;
+    @BindView(R.id.main_tv2)
+    TextView mainTv2;
+    @BindView(R.id.main_tv3)
+    TextView mainTv3;
+    @BindView(R.id.main_btn0)
+    Button mainBtn0;
+    @BindView(R.id.main_btn1)
+    Button mainBtn1;
+    @BindView(R.id.main_btn2)
+    Button mainBtn2;
+
+    private View view;
+    private Activity mActivity;
+
+    public ViewHolder(Activity activity) {
+        this.mActivity = activity;
+        view = View.inflate(activity, R.layout.fragment_main, null);
+        ButterKnife.bind(this, view);
+    }
+
+    @OnClick({R.id.main_btn0, R.id.main_btn1, R.id.main_btn2})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.main_btn0:
+                Toast.makeText(mActivity, &quot;main_btn0&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn1:
+                Toast.makeText(mActivity, &quot;main_btn1&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.main_btn2:
+                Toast.makeText(mActivity, &quot;main_btn2&quot;, Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public View getView() {
+        return view;
+    }
+}
+</code></pre><blockquote>
+<p>其实与绑定fragment类似，都是绑定其中的view ；即:ButterKnife.bind(this, view);</p>
+</blockquote>
+<p>iv:绑定资源</p>
+<pre><code>public class SecondActivity extends AppCompatActivity {
+
+    //绑定单个
+    @BindView(R.id.second_tv0)
+    TextView secondTv0;
+    @BindView(R.id.second_btn0)
+    Button secondBtn0;
+    @BindView(R.id.second_iv)
+    ImageView iv;
+
+    //一次绑定多个
+    @BindViews({R.id.second_tv1, R.id.second_tv2, R.id.second_tv3})
+    List&lt;TextView&gt; mListTv;
+
+    //绑定资源
+    @BindString(R.string.app_name)
+    String appName;
+    @BindArray(R.array.test)
+    String[] str;
+    @BindBitmap(R.mipmap.ic_launcher)
+    Bitmap bitmap;
+    @BindColor(R.color.colorAccent)
+    int color;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        ButterKnife.bind(this);
+
+        initEvent();
+    }
+
+    private void initEvent() {
+
+        secondTv0.setText(appName);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i &lt; str.length; i++) {
+            sb.append(str[i]).append(&quot; &quot;);
+        }
+        mListTv.get(0).setText(sb.toString());
+
+        mListTv.get(1).setTextColor(color);
+
+    }
+
+    @OnClick({R.id.second_tv0, R.id.second_tv1, R.id.second_tv2, R.id.second_tv3, R.id.second_btn0})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.second_tv0:
+                break;
+            case R.id.second_tv1:
+                break;
+            case R.id.second_tv2:
+                break;
+            case R.id.second_tv3:
+                iv.setImageBitmap(bitmap);
+                break;
+            case R.id.second_btn0:
+                startActivity(new Intent(SecondActivity.this, MainView.class));
+                break;
+            default:
+                break;
+        }
+    }
+}
+</code></pre><blockquote>
+<p>上面代码所示，butterknife不仅仅是在处理findViewById和onclick上，依旧可以绑定其他资源，如String、String[]、Bitmap、Drawable、color等；还可以依次绑定多个同种类型的控件，多个点击事件。还有许多用法没有写上，如CheckBox改变监听，item点击监听等，但是如果不清楚的话可以使用findviewbyid再设置相应事件，并不冲突!</p>
+</blockquote>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>i、加载fragment布局文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;ScrollView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;LinearLayout
+        android:id=&quot;@+id/main_ll&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;include layout=&quot;@layout/fragment_main&quot; /&gt;
+
+        &lt;fragment
+            android:id=&quot;@+id/fg1&quot;
+            android:name=&quot;com.vkeline.androidbutterknife.MainFragment&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;300dp&quot; /&gt;
+
+    &lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;
+</code></pre><p>2、处理ViewHolder代码</p>
+<pre><code>public class MainView extends AppCompatActivity {
+
+    @BindView(R.id.mv_fl)
+    FrameLayout mvFl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_view);
+        ButterKnife.bind(this);
+        initEvent();
+    }
+
+    private void initEvent() {
+        View view = new ViewHolder(this).getView();
+        mvFl.addView(view);
+    }
+}
+</code></pre><h1 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a>代码下载</h1><p><a href="http://ot9nmrjuv.bkt.clouddn.com/AndroidButterKnife.zip" target="_blank" rel="noopener">http://ot9nmrjuv.bkt.clouddn.com/AndroidButterKnife.zip</a></p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><pre><code>尽管ButterKnife很方便使用，但是毋庸置疑还是有许多人使用findviewbyid方式。
+其中也有相关的插件FindViewByMe或者是相关将布局文件转换成id形式如
+</code></pre><p><a href="http://android.lineten.net/layout.php" target="_blank" rel="noopener">http://android.lineten.net/layout.php</a></p>
+<pre><code>写布局再转换也很方便，但是点击事件，绑定资源却无能为力，不是那么便捷。
+可能在性能上使用bufferknife不如原始的findviewbyid
+但对于一个项目来说可以忽略不计。
+重要的是，如果接手别人的项目时，不至于茫然失措，可以做到心中有数。
+
+
+现在的我还有没开始kotlin编程，但或许下一刻就开始学习了，这一点也不奇怪。
+
+
+就像当初使用Android Studio 替代 eclipse ，谁用谁知道 。
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexin.png" alt="七水 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="七水 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ButterKnife/" rel="tag"># ButterKnife</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/09/EventBus学习记录/" rel="next" title="Android EventBus 学习记录">
+                <i class="fa fa-chevron-left"></i> Android EventBus 学习记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/11/AsyncTask异步解析/" rel="prev" title="AsyncTask异步解析">
+                AsyncTask异步解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/qishui.jpg" alt="七水">
+            
+              <p class="site-author-name" itemprop="name">七水</p>
+              <p class="site-description motion-element" itemprop="description">莫道君行早 更有早行人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+
+          
+
+
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-配套插件"><span class="nav-number">2.1.</span> <span class="nav-text">A:配套插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-依赖"><span class="nav-number">2.2.</span> <span class="nav-text">B:依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码下载"><span class="nav-number">4.</span> <span class="nav-text">代码下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">七水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dMMmhdnJssUs5BAt2iEz21Hc-gzGzoHsz", "DUGbxFmv8YAeFzBvPxV1pQEl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

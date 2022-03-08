@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AsyncTask,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介AsyncTask是对Handler和线程池的封装，为了避免ANR问题。 使用i:最简化状态  AsyncTask task=new AsyncTask() {             @Override             protected Object doInBackground(Object[] objects) {                 Log.e(&amp;quot;qis">
+<meta name="keywords" content="AsyncTask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AsyncTask异步解析">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/AsyncTask异步解析/index.html">
+<meta property="og:site_name" content="Zhou">
+<meta property="og:description" content="简介AsyncTask是对Handler和线程池的封装，为了避免ANR问题。 使用i:最简化状态  AsyncTask task=new AsyncTask() {             @Override             protected Object doInBackground(Object[] objects) {                 Log.e(&amp;quot;qis">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ot9nmrjuv.bkt.clouddn.com/anysc01.png">
+<meta property="og:updated_time" content="2019-02-08T10:03:36.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AsyncTask异步解析">
+<meta name="twitter:description" content="简介AsyncTask是对Handler和线程池的封装，为了避免ANR问题。 使用i:最简化状态  AsyncTask task=new AsyncTask() {             @Override             protected Object doInBackground(Object[] objects) {                 Log.e(&amp;quot;qis">
+<meta name="twitter:image" content="http://ot9nmrjuv.bkt.clouddn.com/anysc01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":5,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/11/AsyncTask异步解析/">
+
+
+
+
+
+  <title>AsyncTask异步解析 | Zhou</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhou</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Android工程师</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-hao123">
+          <a href="/hao123/" rel="section">
+            
+            导航
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/AsyncTask异步解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="七水">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/qishui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AsyncTask异步解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T00:00:00+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/11/AsyncTask异步解析/" class="leancloud_visitors" data-flag-title="AsyncTask异步解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre><code>AsyncTask是对Handler和线程池的封装，为了避免ANR问题。
+</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>i:最简化状态</p>
+<pre><code> AsyncTask task=new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                Log.e(&quot;qishui&quot;,&quot;调用doInBackground方法...&quot;);
+                return null;
+            }
+        };
+task.execute();
+</code></pre><blockquote>
+<p>以上是最简单的使用方法，在doInBackground方法中运行耗时操作。</p>
+</blockquote>
+<a id="more"></a>
+<p>ii:一般状态</p>
+<pre><code> AsyncTask task=new AsyncTask&lt;Object,Integer,String&gt;() {
+            @Override
+            protected void onPreExecute() {
+                Log.e(&quot;qishui2&quot;,&quot;调用onPreExecute方法...&quot;);
+            }
+            @Override
+            protected String doInBackground(Object[] objects) {
+                Log.e(&quot;qishui2&quot;,&quot;调用doInBackground方法...&quot;+objects[0]);
+                return &quot;Hello world !&quot;;
+            }
+            @Override
+            protected void onPostExecute(String s) {
+                Log.e(&quot;qishui2&quot;,&quot;调用onPostExecute方法... &quot;+s);
+            }
+        };
+task.execute(&quot;a dog&quot;);
+</code></pre><p>执行日志</p>
+<pre><code>04-11 22:06:09.975  E/qishui2: 调用onPreExecute方法...
+04-11 22:06:09.976  E/qishui2: 调用doInBackground方法...a dog
+04-11 22:06:10.011  E/qishui2: 调用onPostExecute方法... Hello world !
+</code></pre><p>关键点解析</p>
+<pre><code>task.execute(&quot;a dog&quot;);中传入的参数是作为doInBackground方法的第一个参数；
+doInBackground方法的返回结果作为onPostExecute方法参数，Hello world !
+其中onPreExecute方法是执行在UI线程中，一般用于开始耗时之前的提示状态信息；
+doInBackground方法就是运行在子线程中，用来执行耗时动作；
+onPostExecute方法也是在UI线程中，它的作用就是接受结果并做出相应处理。
+而execute方法接受的也是可变参数类型，这个所代表的的就是doInBackground
+的可变参数接受数据。如果execute方法传入多个数据，onPreExecute,onPostExecute 执行一次。
+</code></pre><p>重要类型解析</p>
+<pre><code>第一个参数类型Object，所对应的是doInBackground方法可变参数类型；
+第二个参数类型Integer，所对应的是onProgressUpdate方法可变参数类型；
+第三个参数类型String，所对应的是doInBackground方法返回数据类型，也是onPostExecute方法参数类型
+</code></pre><p>注意</p>
+<pre><code>新建和执行需要在UI线程,并且每个实例只能执行一次
+
+怎么才能确认在Ui线程中调用呢？
+
+实际上可以在application中获取线程id，其实就是代表UI线程id,在使用之前判断当前是否是UI线程就可以区分开来。
+</code></pre><p>iii:待更新状态</p>
+<pre><code>AsyncTask task=new AsyncTask&lt;Object,Integer,String&gt;() {
+        @Override
+        protected void onPreExecute() {
+            Log.e(&quot;qishui2&quot;,&quot;调用onPreExecute方法...&quot;);
+        }
+        @Override
+        protected String doInBackground(Object[] objects) {
+            Log.e(&quot;qishui2&quot;,&quot;调用doInBackground方法...&quot;+objects[0]);
+            //通知更新
+            for (int i = 0; i &lt;= 100; i=i+10) {
+                publishProgress(i);
+            }
+            return &quot;Hello world !&quot;;
+        }
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            Log.e(&quot;qishui2&quot;,&quot;调用onProgressUpdate方法...&quot;+values[0]);
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            Log.e(&quot;qishui2&quot;,&quot;调用onPostExecute方法... &quot;+s);
+        }
+    };
+task.execute(&quot;a dog&quot;);
+</code></pre><p>执行日志</p>
+<pre><code>04-11 22:32:16.964 E/qishui2: 调用onPreExecute方法...
+04-11 22:32:16.964 E/qishui2: 调用doInBackground方法...a dog
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...0
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...10
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...20
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...30
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...40
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...50
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...60
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...70
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...80
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...90
+04-11 22:32:16.999 E/qishui2: 调用onProgressUpdate方法...100
+04-11 22:32:16.999 E/qishui2: 调用onPostExecute方法... Hello world !
+</code></pre><p>说明</p>
+<pre><code>在doInBackground中调用publishProgress可以更新onProgressUpdate方法。
+</code></pre><h2 id="一个综合实例"><a href="#一个综合实例" class="headerlink" title="一个综合实例"></a>一个综合实例</h2><pre><code>/**
+ * @author Zhou
+ * Created on 2018/4/11 16:33.
+ * Email:qishuichixi@163.com
+ * Desc:异步任务描述
+ */
+public class FileAsyncTask {
+
+    private static final String KEY_TAG = &quot;qishui&quot;;
+    private View[] views;
+
+    public FileAsyncTask(View[] views, Object... message) {
+        this.views = views;
+        init(message);
+    }
+
+    /**
+     * 开始异步任务
+     */
+    private void init(Object... message) {
+
+        @SuppressLint(&quot;StaticFieldLeak&quot;)
+        AsyncTask asyncTask = new AsyncTask&lt;Object, Integer, String&gt;() {
+
+            @Override
+            protected void onPreExecute() {
+
+                TextView tv = (TextView) views[0];
+                tv.setText(&quot;开始执行 onPreExecute 在UI线程&quot;);
+                Log.e(KEY_TAG, &quot;开始执行 onPreExecute 在UI线程&quot;);
+            }
+
+            @Override
+            protected String doInBackground(Object... objects) {
+
+                int length = objects.length;
+                String[] value = new String[length];
+                Log.e(KEY_TAG, &quot;开始执行 doInBackground 在子线程&quot;);
+
+                for (int i = 0; i &lt; length; i++) {
+                    value[i] = &quot;&quot; + objects[i];
+                    Log.e(KEY_TAG, &quot;参数传递数据:&quot; + value[i]);
+                }
+
+                //更新UI
+                Integer[] integers = new Integer[length];
+                for (int i = 0; i &lt; 97; i++) {
+                    integers[0] = i;
+                    if (length &gt;= 2) {
+                        integers[1] = i + 3;
+                    }
+
+                    //睡一秒更新
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    publishProgress(integers);
+                }
+
+
+                return &quot;Hello World !&quot;;
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+
+                Log.e(KEY_TAG, &quot;开始执行 onProgressUpdate 在UI线程&quot;);
+
+                TextView tv1 = (TextView) views[1];
+                tv1.setText(&quot;更新中:&quot; + values[0] + &quot;%&quot;);
+
+                TextView tv2 = (TextView) views[2];
+                tv2.setText(&quot;更新中:&quot; + values[1] + &quot;%&quot;);
+
+
+                ProgressBar pb1 = (ProgressBar) views[3];
+                ProgressBar pb2 = (ProgressBar) views[4];
+
+                pb1.setProgress(values[0]);
+                Log.e(KEY_TAG, &quot;更新第一条进度:&quot; + values[0]);
+
+                if (values.length &gt;= 2) {
+                    pb2.setProgress(values[1]);
+                    Log.e(KEY_TAG, &quot;更新第二条进度:&quot; + values[1]);
+                }
+
+            }
+
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                TextView tv = (TextView) views[0];
+                tv.setText(&quot;执行结束 onPostExecute 在UI线程:&quot; + s);
+                Log.e(KEY_TAG, &quot;执行结束 onPostExecute 在UI线程:&quot; + s);
+            }
+        };
+        asyncTask.execute(message);
+
+    }
+
+}
+</code></pre><p>调用    </p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    private View[] view = new View[5];
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView tv1 = findViewById(R.id.main_tv1);
+        TextView tv2 = findViewById(R.id.main_tv2);
+        TextView tv3 = findViewById(R.id.main_tv3);
+        ProgressBar pb1 = findViewById(R.id.main_pb1);
+        ProgressBar pb2 = findViewById(R.id.main_pb2);
+
+        view[0] = tv1;
+        view[1] = tv2;
+        view[2] = tv3;
+        view[3] = pb1;
+        view[4] = pb2;
+
+
+        new FileAsyncTask(view, &quot;qishuichixi0001&quot;, &quot;qishuichixi0002&quot;);
+
+    }
+}
+</code></pre><p>布局文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot;
+    tools:context=&quot;com.vkeline.asyncdemo.MainActivity&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/main_tv1&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+
+    &lt;ProgressBar
+        android:id=&quot;@+id/main_pb1&quot;
+        style=&quot;@style/Widget.AppCompat.ProgressBar.Horizontal&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;10dp&quot;
+        android:layout_marginLeft=&quot;10dp&quot;
+        android:layout_marginRight=&quot;10dp&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/main_tv2&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+
+    &lt;ProgressBar
+        android:id=&quot;@+id/main_pb2&quot;
+        style=&quot;@style/Widget.AppCompat.ProgressBar.Horizontal&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;10dp&quot;
+        android:layout_marginLeft=&quot;10dp&quot;
+        android:layout_marginRight=&quot;10dp&quot;
+        android:layout_marginTop=&quot;10dp&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/main_tv3&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p>日志打印</p>
+<pre><code>04-11 22:39:49.414 22608-22608 E/qishui: 开始执行 onPreExecute 在UI线程
+04-11 22:39:49.415 22608-23755 E/qishui: 开始执行 doInBackground 在子线程
+04-11 22:39:49.416 22608-23755 E/qishui: 参数传递数据:qishuichixi0001
+04-11 22:39:49.416 22608-23755 E/qishui: 参数传递数据:qishuichixi0002
+04-11 22:39:50.416 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:50.416 22608-22608 E/qishui: 更新第一条进度:6
+04-11 22:39:50.417 22608-22608 E/qishui: 更新第二条进度:9
+04-11 22:39:51.417 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:51.417 22608-22608 E/qishui: 更新第一条进度:12
+04-11 22:39:51.418 22608-22608 E/qishui: 更新第二条进度:15
+04-11 22:39:52.417 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:52.417 22608-22608 E/qishui: 更新第一条进度:18
+04-11 22:39:52.418 22608-22608 E/qishui: 更新第二条进度:21
+04-11 22:39:53.417 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:53.418 22608-22608 E/qishui: 更新第一条进度:24
+04-11 22:39:53.418 22608-22608 E/qishui: 更新第二条进度:27
+04-11 22:39:54.417 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:54.418 22608-22608 E/qishui: 更新第一条进度:24
+04-11 22:39:54.418 22608-22608 E/qishui: 更新第二条进度:27
+04-11 22:39:55.419 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:55.420 22608-22608 E/qishui: 更新第一条进度:36
+04-11 22:39:55.421 22608-22608 E/qishui: 更新第二条进度:39
+04-11 22:39:56.421 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:56.422 22608-22608 E/qishui: 更新第一条进度:36
+04-11 22:39:56.422 22608-22608 E/qishui: 更新第二条进度:39
+04-11 22:39:57.423 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:57.423 22608-22608 E/qishui: 更新第一条进度:42
+04-11 22:39:57.424 22608-22608 E/qishui: 更新第二条进度:45
+04-11 22:39:58.424 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:58.425 22608-22608 E/qishui: 更新第一条进度:54
+04-11 22:39:58.425 22608-22608 E/qishui: 更新第二条进度:57
+04-11 22:39:59.425 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:39:59.426 22608-22608 E/qishui: 更新第一条进度:54
+04-11 22:39:59.426 22608-22608 E/qishui: 更新第二条进度:57
+04-11 22:40:00.427 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:00.427 22608-22608 E/qishui: 更新第一条进度:60
+04-11 22:40:00.428 22608-22608 E/qishui: 更新第二条进度:63
+04-11 22:40:01.428 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:01.429 22608-22608 E/qishui: 更新第一条进度:66
+04-11 22:40:01.429 22608-22608 E/qishui: 更新第二条进度:69
+04-11 22:40:02.430 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:02.431 22608-22608 E/qishui: 更新第一条进度:72
+04-11 22:40:02.431 22608-22608 E/qishui: 更新第二条进度:75
+04-11 22:40:03.431 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:03.432 22608-22608 E/qishui: 更新第一条进度:78
+04-11 22:40:03.433 22608-22608 E/qishui: 更新第二条进度:81
+04-11 22:40:04.436 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:04.438 22608-22608 E/qishui: 更新第一条进度:90
+04-11 22:40:04.438 22608-22608 E/qishui: 更新第二条进度:93
+04-11 22:40:05.436 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:05.437 22608-22608 E/qishui: 更新第一条进度:90
+04-11 22:40:05.437 22608-22608 E/qishui: 更新第二条进度:93
+04-11 22:40:06.438 22608-22608 E/qishui: 开始执行 onProgressUpdate 在UI线程
+04-11 22:40:06.438 22608-22608 E/qishui: 更新第一条进度:96
+04-11 22:40:06.439 22608-22608 E/qishui: 更新第二条进度:99
+04-11 22:40:06.453 22608-22608 E/qishui: 执行结束 onPostExecute 在UI线程:Hello World !
+</code></pre><h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p><img src="http://ot9nmrjuv.bkt.clouddn.com/anysc01.png" alt></p>
+<h2 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a>代码下载</h2><p><a href="http://ot9nmrjuv.bkt.clouddn.com/AsyncDemo.rar" target="_blank" rel="noopener">http://ot9nmrjuv.bkt.clouddn.com/AsyncDemo.rar</a></p>
+<h2 id="另一个异步使用实例"><a href="#另一个异步使用实例" class="headerlink" title="另一个异步使用实例"></a>另一个异步使用实例</h2><pre><code>public class MainActivity extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        new FileReadAsyncTask(&quot;/zhouwenxi/log/test.info&quot;).setCallBack(new FileReadAsyncTask.CallBack() {
+            @Override
+            public void success(List list) {
+                for (int i = 0; i &lt; 16; i++) {
+                    LogUtils.e(&quot;第&quot;+i+&quot;个数: &quot;+list.get(i));
+                }
+            }
+        });
+
+
+    }
+}
+</code></pre><h2 id="主要实体"><a href="#主要实体" class="headerlink" title="主要实体"></a>主要实体</h2><pre><code>/**
+ * @author Zhou
+ *         Created on 2018/4/11 13:54.
+ *         Email:qishuichixi@163.com
+ *         Desc:
+ */
+public class FileReadAsyncTask {
+
+    private CallBack callBack;
+
+    public interface CallBack {
+        void success(List list);
+    }
+    public void setCallBack(CallBack callBack) {
+        this.callBack = callBack;
+    }
+
+    public FileReadAsyncTask(String msg) {
+        init(msg);
+    }
+
+    @SuppressLint(&quot;StaticFieldLeak&quot;)
+    private void init(final String msg) {
+
+        AsyncTask task = new AsyncTask&lt;Object, Integer, List&gt;() {
+            @Override
+            protected List doInBackground(Object... objects) {
+                return FileUtils.readMessageByLine(msg);
+            }
+
+            @Override
+            protected void onPostExecute(List list) {
+
+                if (list.size() &gt; 0) {
+                    if (callBack != null) {
+                        callBack.success(list);
+                    }
+                }
+            }
+        };
+        task.execute(msg);
+    }
+
+}
+</code></pre><h2 id="读取信息行为单位"><a href="#读取信息行为单位" class="headerlink" title="读取信息行为单位"></a>读取信息行为单位</h2><pre><code>/**
+ * 读取信息行为单位
+ *
+ * @param filePath
+ * @return
+ */
+public static List&lt;String&gt; readMessageByLine(String filePath) {
+
+    List list = new ArrayList&lt;String&gt;();
+    File file = new File(StringUtils.addString(FileUtils.getSDPath(), File.separator, filePath));
+    if (!file.exists()) {
+        return list;
+    }
+
+    try {
+        String temp = &quot;&quot;;
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        while ((temp = reader.readLine()) != null) {
+            list.add(temp);
+        }
+        reader.close();
+    } catch (Exception e) {
+        LogUtils.file(&quot;读取信息行为单位发生异常!&quot;);
+        e.printStackTrace();
+    }
+
+    return list;
+
+}
+</code></pre><h2 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h2><pre><code>04-12 10:32:13.489 23926-23926  E/QISHUI: 第0个数: 1: 0 
+04-12 10:32:13.489 23926-23926  E/QISHUI: 第1个数: 2: 3 6 9 12 15 18 21 24 27 30 33 36 39 42 45 48 51 54 57 60 63 66 69 72 75 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第2个数: 3: 78 81 84 87 90 93 96 99 102 105 108 111 114 117 120 123 126 129 132 135 138 141 144 147 150 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第3个数: 4: 153 156 159 162 165 168 171 174 177 180 183 186 189 192 195 198 201 204 207 210 213 216 219 222 225 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第4个数: 5: 228 231 234 237 240 243 246 249 252 255 258 261 264 267 270 273 276 279 282 285 288 291 294 297 300 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第5个数: 6: 303 306 309 312 315 318 321 324 327 330 333 336 339 342 345 348 351 354 357 360 363 366 369 372 375 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第6个数: 7: 378 381 384 387 390 393 396 399 402 405 408 411 414 417 420 423 426 429 432 435 438 441 444 447 450 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第7个数: 8: 453 456 459 462 465 468 471 474 477 480 483 486 489 492 495 498 501 504 507 510 513 516 519 522 525 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第8个数: 9: 528 531 534 537 540 543 546 549 552 555 558 561 564 567 570 573 576 579 582 585 588 591 594 597 600 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第9个数: 10: 603 606 609 612 615 618 621 624 627 630 633 636 639 642 645 648 651 654 657 660 663 666 669 672 675 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第10个数: 11: 678 681 684 687 690 693 696 699 702 705 708 711 714 717 720 723 726 729 732 735 738 741 744 747 750 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第11个数: 12: 753 756 759 762 765 768 771 774 777 780 783 786 789 792 795 798 801 804 807 810 813 816 819 822 825 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第12个数: 13: 828 831 834 837 840 843 846 849 852 855 858 861 864 867 870 873 876 879 882 885 888 891 894 897 900 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第13个数: 14: 903 906 909 912 915 918 921 924 927 930 933 936 939 942 945 948 951 954 957 960 963 966 969 972 975 
+04-12 10:32:13.490 23926-23926  E/QISHUI: 第14个数: 15: 978 981 984 987 990 993 996 999 1002 1005 1008 1011 1014 1017 1020 1023 1026 1029 1032 1035 1038 1041 1044 1047 1050 
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexin.png" alt="七水 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="七水 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AsyncTask/" rel="tag"># AsyncTask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/10/黄油刀学习使用/" rel="next" title="Android ButterKnife 【黄油刀】学习使用">
+                <i class="fa fa-chevron-left"></i> Android ButterKnife 【黄油刀】学习使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/16/状态栏颜色处理/" rel="prev" title="状态栏颜色处理">
+                状态栏颜色处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/qishui.jpg" alt="七水">
+            
+              <p class="site-author-name" itemprop="name">七水</p>
+              <p class="site-description motion-element" itemprop="description">莫道君行早 更有早行人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+
+          
+
+
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个综合实例"><span class="nav-number">3.</span> <span class="nav-text">一个综合实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-1"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码下载"><span class="nav-number">5.</span> <span class="nav-text">代码下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另一个异步使用实例"><span class="nav-number">6.</span> <span class="nav-text">另一个异步使用实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要实体"><span class="nav-number">7.</span> <span class="nav-text">主要实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取信息行为单位"><span class="nav-number">8.</span> <span class="nav-text">读取信息行为单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志打印"><span class="nav-number">9.</span> <span class="nav-text">日志打印</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">七水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dMMmhdnJssUs5BAt2iEz21Hc-gzGzoHsz", "DUGbxFmv8YAeFzBvPxV1pQEl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

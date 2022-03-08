@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="kotlin,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本语法 第一部分:2018年5月10日16:26:27">
+<meta name="keywords" content="kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin">
+<meta property="og:url" content="http://yoursite.com/2018/05/22/Kotlin/index.html">
+<meta property="og:site_name" content="Zhou">
+<meta property="og:description" content="基本语法 第一部分:2018年5月10日16:26:27">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg">
+<meta property="og:image" content="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg">
+<meta property="og:image" content="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg">
+<meta property="og:image" content="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg">
+<meta property="og:updated_time" content="2019-03-24T05:53:00.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin">
+<meta name="twitter:description" content="基本语法 第一部分:2018年5月10日16:26:27">
+<meta name="twitter:image" content="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":5,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/22/Kotlin/">
+
+
+
+
+
+  <title>Kotlin | Zhou</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhou</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Android工程师</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-hao123">
+          <a href="/hao123/" rel="section">
+            
+            导航
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/Kotlin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="七水">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/qishui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kotlin</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T00:00:00+08:00">
+                2018-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/22/Kotlin/" class="leancloud_visitors" data-flag-title="Kotlin">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg" alt></p>
+<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><blockquote>
+<p>第一部分:2018年5月10日16:26:27</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><p>fun 特定关键词</p>
+<p>sum 方法名</p>
+<p>vararg 可变参数类型</p>
+<p>var 变量类型</p>
+<p>Int 整型</p>
+<p>返回数据</p>
+<pre><code>fun sum(vararg i: Int): Int {
+
+    var sum = 0
+    for (j in i.indices) {
+        sum =sum+i[j]
+    }
+    return sum
+}
+</code></pre><p>两个参数，返回两个数据之和</p>
+<pre><code>fun sum(a: Int, b: Int): Int {
+
+        return a + b
+}
+</code></pre><p>方法返回数据为空 Unit可以省略不写</p>
+<pre><code>fun out(s: String): Unit {
+       println(s)
+   }
+</code></pre><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>val 一次赋值的局部变量 类似变量加上final</p>
+<p>var 变量</p>
+<p>可以推断变量类型</p>
+<pre><code>var a=0
+a=10
+val b=10
+var c:String=&quot;Hello&quot;
+val d:Int=10
+</code></pre><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>有单行注释，块注释；可以嵌套</p>
+<pre><code>/*
+LogUtil.out(a)
+/*LogUtil.out(a)
+LogUtil.out(a)*/
+LogUtil.out(a)
+*/
+
+//LogUtil.out(a)
+</code></pre><h2 id="使用字符串模板"><a href="#使用字符串模板" class="headerlink" title="使用字符串模板"></a>使用字符串模板</h2><p>   ${} 调用方法 $a 变量可以不用{} 使用字符串形式</p>
+<pre><code>print(&quot;Hello World ${MathUtil.sum(1, 2, 4, 4)} and ${sb.name}&quot;)
+</code></pre><h2 id="使用条件表达式"><a href="#使用条件表达式" class="headerlink" title="使用条件表达式"></a>使用条件表达式</h2><p>   直接返回结果，也可以使用常规方法   </p>
+<pre><code>fun minOf(a:Int,b:Int)=if(a&lt;b) a else b
+</code></pre><h2 id="使用可空值"><a href="#使用可空值" class="headerlink" title="使用可空值"></a>使用可空值</h2><p>   toIntOrNull()当类型不是数字类型时候返回null，Int? 空检测</p>
+<pre><code>fun parseInt(s:String):Int?{
+     return s.toIntOrNull()
+ }
+
+ fun printProduct(s1:String,s2:String):Int{
+
+     val s1=parseInt(s1)
+     val s2= parseInt(s2)
+
+     if(s1==null){
+         return 0
+     }
+
+     if(s2==null){
+         return 0
+     }
+
+     return s1*s2
+ }
+</code></pre><p>   toIntOrNull方法源码</p>
+<pre><code>@SinceKotlin(&quot;1.1&quot;)
+public fun String.toIntOrNull(radix: Int): Int? {
+    checkRadix(radix)
+
+    val length = this.length
+    if (length == 0) return null
+
+    val start: Int
+    val isNegative: Boolean
+    val limit: Int
+
+    val firstChar = this[0]
+    if (firstChar &lt; &apos;0&apos;) {  // Possible leading sign
+        if (length == 1) return null  // non-digit (possible sign) only, no digits after
+
+        start = 1
+
+        if (firstChar == &apos;-&apos;) {
+            isNegative = true
+            limit = Int.MIN_VALUE
+        } else if (firstChar == &apos;+&apos;) {
+            isNegative = false
+            limit = -Int.MAX_VALUE
+        } else
+            return null
+    } else {
+        start = 0
+        isNegative = false
+        limit = -Int.MAX_VALUE
+    }
+
+
+    val limitBeforeMul = limit / radix
+    var result = 0
+    for (i in start..(length - 1)) {
+        val digit = digitOf(this[i], radix)
+
+        if (digit &lt; 0) return null
+        if (result &lt; limitBeforeMul) return null
+
+        result *= radix
+
+        if (result &lt; limit + digit) return null
+
+        result -= digit
+    }
+
+    return if (isNegative) result else -result
+}
+</code></pre><h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><p>在判断类型的域中，或者判断语句之后，不需要转化类型了，可以直接使用相关方法； is 属于  !is 不属于</p>
+<pre><code>fun e(obj: Any) {
+       println(&quot;===========================S==============================&quot;)
+       if (obj is String) {
+           println(&quot;字符串长度&quot;+obj.length+&quot;  &quot;+obj)
+       } 
+
+       if(obj !is String){
+           println(&quot;&quot; + obj)
+       }
+       println(&quot;===========================E==============================&quot;)
+   }
+</code></pre><h2 id="使用for循环"><a href="#使用for循环" class="headerlink" title="使用for循环"></a>使用for循环</h2><p>in [0,30] 都包含在内</p>
+<pre><code>for(i in 0..30){
+     println(i)
+ }
+</code></pre><p>arrayOf 类似于集合，可接受不同类型，不同长度的功能；</p>
+<p>//public inline fun <reified @purereifiable t> arrayOf(vararg elements: T): Array<t> </t></reified></p>
+<p>indices 范围，尺度</p>
+<pre><code>val  arr=arrayOf(&quot;1&quot;,&quot;2&quot;,3,false,&quot;Hello World&quot;)
+for(i in arr.indices){
+    println(arr[i])
+}
+</code></pre><h2 id="使用while循环"><a href="#使用while循环" class="headerlink" title="使用while循环"></a>使用while循环</h2><pre><code>var index=0
+while (index&lt;arr.size){
+    index++
+    print(&quot;Hello  &quot;)
+}
+</code></pre><h2 id="使用when"><a href="#使用when" class="headerlink" title="使用when"></a>使用when</h2><p>有点类似 switch case 语句 ； 适配到一个就结束，默认使用 else</p>
+<pre><code>fun main(args: Array&lt;String&gt;) {
+
+    val arr = arrayOf(&quot;1&quot;, &quot;2&quot;, 3, false, 4.5)
+    for (i in arr.indices) {
+
+        when (arr[i]) {
+            &quot;1&quot; -&gt; println(&quot;字符串数字1&quot;)
+            is String -&gt; println(&quot;String 类型&quot;)
+            is Boolean -&gt; println(&quot;布尔 类型&quot;)
+            is Int -&gt; println(&quot;整数 类型&quot;)
+            3 -&gt; println(&quot;数字3&quot;)
+            else -&gt; println(&quot;UnKnown&quot;)
+
+        }
+    }
+
+}
+</code></pre><p>输出结果</p>
+<pre><code>字符串数字1
+String 类型
+整数 类型
+布尔 类型
+UnKnown
+</code></pre><h2 id="使用区间-（range）"><a href="#使用区间-（range）" class="headerlink" title="使用区间 （range）"></a>使用区间 （range）</h2><p>in 在区间之内</p>
+<pre><code>for (i in 0..10) {
+       println(&quot;i:&quot;+i)
+}
+</code></pre><p>step 步长<br>     for (i in 0..20 step 5 ) {<br>            println(“i:” + i)<br>        }</p>
+<p>输出</p>
+<pre><code>i:0
+i:5
+i:10
+i:15
+i:20
+</code></pre><p>downTo 减少  </p>
+<pre><code>for(x in 27 downTo 9 step 2){
+      println(&quot;x=$x&quot; )
+  }
+</code></pre><p>输出</p>
+<pre><code>x=27
+x=25
+x=23
+x=21
+x=19
+x=17
+x=15
+x=13
+x=11
+x=9
+</code></pre><p>until 【0，10）</p>
+<pre><code>for (x in 0 until 10) {
+    println(&quot;$x====&quot;)
+}
+</code></pre><p>输出</p>
+<pre><code>0====
+1====
+2====
+3====
+4====
+5====
+6====
+7====
+8====
+9====
+</code></pre><p>!in 在区间之外</p>
+<p>Random().nextInt(1000) 产生一个1000之内的整数</p>
+<pre><code>val s = Random().nextInt(1000)
+if (s !in 10..100) {
+    println(&quot;$s 不在10到100之内...&quot;)
+} else {
+    println(&quot;$s 在10到100之内...&quot;)
+}
+</code></pre><h2 id="使用集合"><a href="#使用集合" class="headerlink" title="使用集合"></a>使用集合</h2><p>listOf 转换成一个集合，遍历  for(item in list)</p>
+<p> //public fun <t> listOf(vararg elements: T): List<t> = if (elements.size &gt; 0) elements.asList() else emptyList()</t></t></p>
+<pre><code>val list = listOf(&quot;1&quot;, 2, 3.0, true)
+println(list.get(0))
+for(item in list){
+    println(item)
+}
+</code></pre><p>ArrayList</p>
+<pre><code>val mList = ArrayList&lt;Any&gt;()
+mList.add(1)
+mList.add(&quot;2&quot;)
+mList.add(3.0)
+mList.remove(1)
+mList.add(&quot;22&quot;)
+
+for (i in mList.indices) {
+    println(&quot;第${i}个数据:${mList[i]}&quot;)
+}
+</code></pre><p>HashMap</p>
+<pre><code>val map = HashMap&lt;String, String&gt;()
+map.put(&quot;one&quot;, &quot;1&quot;)
+map.put(&quot;two&quot;, &quot;2&quot;)
+map.put(&quot;three&quot;, &quot;3&quot;)
+for (key in map.keys) {
+    println(&quot;键值对 ${key} :${map.get(key)}&quot;)
+}
+</code></pre><p>输出结果</p>
+<pre><code>1
+1
+2
+3.0
+true
+第0个数据:2
+第1个数据:3.0
+第2个数据:22
+键值对 one :1
+键值对 two :2
+键值对 three :3
+</code></pre><p>新方式遍历map</p>
+<pre><code>val map = HashMap&lt;String, String&gt;();
+map.put(&quot;one&quot;, &quot;1&quot;)
+map.put(&quot;two&quot;, &quot;2&quot;)
+for ((x, y) in map) {
+    println(&quot;$x====$y&quot;)
+}
+</code></pre><p>初始值，map2不可变</p>
+<pre><code>val map2 = mapOf(&quot;1&quot; to &quot;one&quot;, &quot;2&quot; to &quot;two&quot;, &quot;3&quot; to &quot;three&quot;)
+for ((m, n) in map2) {
+    println(&quot;$m---&gt;$n&quot;)
+}
+</code></pre><h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>对集合数据进行筛选、整合、排序等，很好、很强大</p>
+<pre><code>val f = listOf(&quot;black1&quot;, &quot;red1&quot;, &quot;white&quot;, &quot;black2&quot;, &quot;red2&quot;, &quot;black7&quot;, &quot;black2&quot;, &quot;black6&quot;)
+f.filter { it.startsWith(&quot;b&quot;) || it.startsWith(&quot;r&quot;) }
+        .map { it.toUpperCase() }
+        .sortedBy { it }
+        .forEach { println(it) }
+</code></pre><p>输出結果</p>
+<pre><code>BLACK1
+BLACK2
+BLACK2
+BLACK6
+BLACK7
+RED1
+RED2
+</code></pre><h2 id="if-not-null-缩写"><a href="#if-not-null-缩写" class="headerlink" title="if not null 缩写  ?"></a>if not null 缩写  ?</h2><p>此时我D盘有文件夹”1”不存在文件夹”Test”</p>
+<pre><code>val files = File(&quot;D://1&quot;).listFiles()
+println(files?.size)
+
+val files2 = File(&quot;D://test&quot;).listFiles()
+  //println(files2?.size)
+
+println(files2.size)
+</code></pre><p>输出结果</p>
+<pre><code>3
+Exception in thread &quot;main&quot; java.lang.NullPointerException
+    at HelloKt.main(hello.kt:38)
+</code></pre><h2 id="if-null-缩写"><a href="#if-null-缩写" class="headerlink" title="if null 缩写  ?:"></a>if null 缩写  ?:</h2><pre><code>val s1 = null
+val email = s1 ?: &quot;数据为空!&quot;
+val s2 = &quot;qishuichixi@126.com&quot;
+val emai2 = s2 ?: &quot;数据为空!&quot;
+
+println(&quot;email:${email} emai2:${emai2}&quot;);
+</code></pre><p>输出</p>
+<pre><code>email:数据为空! emai2:qishuichixi@126.com
+</code></pre><h2 id="if-not-null-else-缩写-相当于将null-转成-其他处理"><a href="#if-not-null-else-缩写-相当于将null-转成-其他处理" class="headerlink" title="if not null else 缩写  ?  ?: 相当于将null 转成 其他处理"></a>if not null else 缩写  ?  ?: 相当于将null 转成 其他处理</h2><pre><code>val files = File(&quot;D://1&quot;).listFiles()
+println(files?.size ?: &quot;empty&quot;)
+
+val files2 = File(&quot;D://test&quot;).listFiles()
+println(files2?.size ?: &quot;empty&quot;)
+</code></pre><p>输出结果</p>
+<pre><code>3
+empty
+</code></pre><h2 id="if-not-null-缩写-let-如果不为空则执行"><a href="#if-not-null-缩写-let-如果不为空则执行" class="headerlink" title="if not null 缩写 ?.let 如果不为空则执行"></a>if not null 缩写 ?.let 如果不为空则执行</h2><pre><code>val s1 = null
+val email = s1
+val s2 = &quot;qishuichixi@126.com&quot;
+val emai2 = s2
+//不为空
+email?.let {
+    println(&quot;email不为空....&quot;)
+}
+
+//不为空
+emai2?.let {
+    println(&quot;emai2不为空....&quot;)
+}
+</code></pre><p>輸出</p>
+<pre><code>emai2不为空....
+</code></pre><p><img src="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg" alt></p>
+<h1 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h1><blockquote>
+<p>第二部分: 2018年5月10日16:29:28</p>
+</blockquote>
+<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>Double 64</p>
+<p>Float  32</p>
+<p>Long   64</p>
+<p>Int    32</p>
+<p>Short  16</p>
+<p>Byte   8</p>
+<blockquote>
+<p>在kotlin中字符不是数字</p>
+</blockquote>
+<h2 id="字面常量"><a href="#字面常量" class="headerlink" title="字面常量"></a>字面常量</h2><p>十进制： 123   123L  123.5 123.5e10  123.5F</p>
+<p>十六进制: 0xAF22</p>
+<p>二进制: 0b1000101010</p>
+<blockquote>
+<p>不支持八进制</p>
+</blockquote>
+<h2 id="数字字面值中的下划线"><a href="#数字字面值中的下划线" class="headerlink" title="数字字面值中的下划线"></a>数字字面值中的下划线</h2><pre><code>val l = 1_000_000
+val l1 = 1234_1234_5478_7895L
+val l2 = 0xFF_EE_5E
+val l3 = 0b10001010_000111001_00011100
+
+LogUtil.all(l, l1, l2, l3)
+</code></pre><p>更加易读</p>
+<p>输出</p>
+<p>===========================S==============================</p>
+<p>1000000</p>
+<p>1234123454787895</p>
+<p>16772702</p>
+<p>18102556</p>
+<p>===========================E==============================</p>
+<p>打印方法</p>
+<pre><code>fun all(vararg any: Any) {
+
+      println(&quot;===========================S==============================&quot;)
+      for (a in any) {
+          println(a)
+      }
+      println(&quot;===========================E==============================&quot;)
+
+  }
+</code></pre><h2 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h2><p>较小类型的隐式转成较大类型，可以通过显示转换来拓宽数字</p>
+<pre><code>val a: Int? = null
+val b: Int? = 20
+//错误写法
+//val c:Long?=b
+val c: Long? = b?.toLong()
+val d: Long? = a?.toLong()
+
+LogUtil.all(c, d)
+</code></pre><p>输出</p>
+<p>===========================S==============================</p>
+<p>20</p>
+<p>null</p>
+<p>===========================E==============================</p>
+<p>Long+Int=Lont  </p>
+<pre><code>val x: Int = (3L + 1).toInt()
+val y = 3L + 12
+println(x)
+println(y)
+</code></pre><p>每个数字类型支持如下转换</p>
+<p>toByte() Byte</p>
+<p>toShort Short</p>
+<p>toInt Int</p>
+<p>toLong Long</p>
+<p>toFloat Float</p>
+<p>toDouble Double</p>
+<p>toChar Char</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><pre><code>import com.qishui.util.LogUtil
+
+fun main(args: Array&lt;String&gt;) {
+
+
+    // 错误  没有&gt;&gt; &lt;&lt;  &gt;&gt;&gt;等
+    // val x1=1&gt;&gt;2
+    //左移2位 2^3
+    val x2 = (1 shl 3)
+    //右移4位 1/(2^2)  减到 0 不再减少
+    val x3:Double=(x2 shr 2).toDouble()
+    val x4:Double=(x2 shr 5).toDouble()
+    //无符号右移 &gt;&gt;&gt; ushr
+    val x5=10 ushr 2
+    // 且 &amp;&amp;
+    val f=true and false and true
+    val h=true &amp;&amp; false
+    //或 ||
+    val m=true or false or false
+    val n=true || false || false
+    //异或  0∧0＝0，0∧1＝1，1∧1＝0
+    val p=12 xor 3
+
+
+
+    LogUtil.all(&quot;x2=$x2,x3=$x3,x4=$x4,x5=$x5 ,f=$f,h=$h,m=$m，n=$n，p=$p&quot;)
+
+}
+</code></pre><p>输出</p>
+<pre><code>===========================S==============================
+x2=8,x3=2.0,x4=0.0,x5=2 ,f=false,h=false,m=true，n=true，p=15
+===========================E==============================
+</code></pre><h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><p>用char表示，不能直接当做数字。’1’, 支持几个转义序列，\t \b \n \r \’ \ \$ ;编码其他要用Unicode转义：’\uFF00’。</p>
+<h2 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h2><p>Boolean类型，有两个值 true、false。</p>
+<p>内置运算 &amp;&amp; 、|| 、！</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>用Array表示</p>
+<p>arrayof(1,2,3) 初始化数组</p>
+<p>arrayOfNulls 表示空数组 长度为10</p>
+<pre><code>val b = arrayOfNulls&lt;String&gt;(10)
+for (x in b) {
+    println(x)
+}
+</code></pre><p>输出</p>
+<pre><code>null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+</code></pre><p>还有表示同一类 IntArray 、ByteArray 、等 与 Array 没有继承关系 ，可以表示弄一类型数组 。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>用String表示</p>
+<pre><code>val b : String =&quot;HelloWorld&quot;
+println(&quot;b[2]=${b[2]}&quot;)
+   for (x in b) {
+       println(x)
+   }
+</code></pre><p>可以遍历，使用字符访问。</p>
+<p>输出</p>
+<pre><code>b[2]=l
+H
+e
+l
+l
+o
+W
+o
+r
+l
+d
+</code></pre><h2 id="字符串字面值"><a href="#字符串字面值" class="headerlink" title="字符串字面值"></a>字符串字面值</h2><p> “”” 有点类似于html pre标签，把字符串预定输出样式</p>
+<pre><code>val text = &quot;&quot;&quot;
+        for(c in  &quot;Hello&quot;){
+        println(c)
+        }
+&quot;&quot;&quot;
+
+println(text)
+</code></pre><p>输出</p>
+<pre><code>for(c in  &quot;Hello&quot;){
+println(c)
+}
+</code></pre><p>trimMargin() 函数去除前导空格</p>
+<h2 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h2><p>在字符串里面调用方法，属性</p>
+<pre><code>val b: String = &quot;HelloWorld&quot;
+println(&quot;b[2]=${b[2]}&quot;)
+</code></pre><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>申明，源文件通常以包申明开头</p>
+<pre><code>package com.qishui.util
+</code></pre><p>默认导入</p>
+<pre><code>import kotlin.*
+import kotlin.annotation.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.test.*
+
+
+import kotlin.*
+</code></pre><p>导入kotlin中所有方法、属性</p>
+<pre><code>import com.qishui.util.StringUtils
+</code></pre><p>导入util包中StringUtils类</p>
+<p>根据不同平台，还会导入其他额外的包。</p>
+<p>如果名字相同的类，可以使用别名</p>
+<pre><code>import com.qishui.util.LogUtil
+import com.qishui.LogUtil as SecLogUtil
+</code></pre><h2 id="顶层声明可见性"><a href="#顶层声明可见性" class="headerlink" title="顶层声明可见性"></a>顶层声明可见性</h2><p>如果顶层声明是private的，声明它的文件是私有的。</p>
+<h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><h2 id="if表达式"><a href="#if表达式" class="headerlink" title="if表达式"></a>if表达式</h2><p>使用if就可以返回数据，不需要三元表达式。</p>
+<pre><code>fun minOf(a:Int,b:Int)=if(a&lt;b) a else b
+</code></pre><p>如果是表达式，如要使用else 。</p>
+<h2 id="when表达式"><a href="#when表达式" class="headerlink" title="when表达式"></a>when表达式</h2><p>类似switch方法，直到某一分支符合，结束语句。</p>
+<pre><code>   for (f in 0..5) {
+
+    val x = Random().nextInt(10)
+    when (x) {
+        0 -&gt; {
+            LogUtil.e(&quot;x=0&quot;)
+        }
+
+        1 -&gt; {
+            LogUtil.e(&quot;x=1&quot;)
+        }
+
+        2, 3, 4 -&gt; {
+            LogUtil.e(&quot;x=${x}属于【2，4】&quot;)
+        }
+
+        in 5..7 -&gt; {
+            LogUtil.e(&quot;x=${x}属于【5，7】&quot;)
+        }
+        else -&gt; {
+            LogUtil.e(&quot;x=${x}属于【5，10】&quot;)
+        }
+    }
+}
+</code></pre><p>输出</p>
+<pre><code>===========================S==============================
+字符串长度10  x=3属于【2，4】
+===========================E==============================
+===========================S==============================
+字符串长度3  x=0
+===========================E==============================
+===========================S==============================
+字符串长度10  x=6属于【5，7】
+===========================E==============================
+===========================S==============================
+字符串长度10  x=2属于【2，4】
+===========================E==============================
+===========================S==============================
+字符串长度10  x=2属于【2，4】
+===========================E==============================
+===========================S==============================
+字符串长度3  x=0
+===========================E==============================
+</code></pre><p>可以取代if if-else 。</p>
+<h2 id="返回和跳转"><a href="#返回和跳转" class="headerlink" title="返回和跳转"></a>返回和跳转</h2><p><img src="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg" alt></p>
+<h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><blockquote>
+<p>第三部分: 2018年5月10日16:30:06</p>
+</blockquote>
+<h2 id="类和继承"><a href="#类和继承" class="headerlink" title="类和继承"></a>类和继承</h2><h2 id="属性和字段"><a href="#属性和字段" class="headerlink" title="属性和字段"></a>属性和字段</h2><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h2 id="可见性修饰符"><a href="#可见性修饰符" class="headerlink" title="可见性修饰符"></a>可见性修饰符</h2><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h2 id="数据类"><a href="#数据类" class="headerlink" title="数据类"></a>数据类</h2><h2 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h2><h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h2 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h2><h2 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h2><h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h2 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h2><h2 id="委托属性"><a href="#委托属性" class="headerlink" title="委托属性"></a>委托属性</h2><p><img src="http://ot9nmrjuv.bkt.clouddn.com/kotlin.jpg" alt></p>
+<h1 id="函数和Lambda"><a href="#函数和Lambda" class="headerlink" title="函数和Lambda"></a>函数和Lambda</h1><blockquote>
+<p>第四部分: 2018年5月10日16:34:44</p>
+</blockquote>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><h2 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h2><h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexin.png" alt="七水 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="七水 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kotlin/" rel="tag"># kotlin</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/05/模拟服务器/" rel="next" title="模拟服务器">
+                <i class="fa fa-chevron-left"></i> 模拟服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/23/查看apk方法及apk分包处理/" rel="prev" title="查看apk方法及apk分包处理">
+                查看apk方法及apk分包处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/qishui.jpg" alt="七水">
+            
+              <p class="site-author-name" itemprop="name">七水</p>
+              <p class="site-description motion-element" itemprop="description">莫道君行早 更有早行人</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+
+          
+
+
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本语法"><span class="nav-number">1.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义函数"><span class="nav-number">1.1.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">1.3.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用字符串模板"><span class="nav-number">1.4.</span> <span class="nav-text">使用字符串模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用条件表达式"><span class="nav-number">1.5.</span> <span class="nav-text">使用条件表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用可空值"><span class="nav-number">1.6.</span> <span class="nav-text">使用可空值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型判断"><span class="nav-number">1.7.</span> <span class="nav-text">类型判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用for循环"><span class="nav-number">1.8.</span> <span class="nav-text">使用for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用while循环"><span class="nav-number">1.9.</span> <span class="nav-text">使用while循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用when"><span class="nav-number">1.10.</span> <span class="nav-text">使用when</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用区间-（range）"><span class="nav-number">1.11.</span> <span class="nav-text">使用区间 （range）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用集合"><span class="nav-number">1.12.</span> <span class="nav-text">使用集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda表达式"><span class="nav-number">1.13.</span> <span class="nav-text">lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-not-null-缩写"><span class="nav-number">1.14.</span> <span class="nav-text">if not null 缩写  ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-null-缩写"><span class="nav-number">1.15.</span> <span class="nav-text">if null 缩写  ?:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-not-null-else-缩写-相当于将null-转成-其他处理"><span class="nav-number">1.16.</span> <span class="nav-text">if not null else 缩写  ?  ?: 相当于将null 转成 其他处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-not-null-缩写-let-如果不为空则执行"><span class="nav-number">1.17.</span> <span class="nav-text">if not null 缩写 ?.let 如果不为空则执行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本内容"><span class="nav-number">2.</span> <span class="nav-text">基本内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本类型"><span class="nav-number">2.1.</span> <span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">2.2.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字面常量"><span class="nav-number">2.3.</span> <span class="nav-text">字面常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字字面值中的下划线"><span class="nav-number">2.4.</span> <span class="nav-text">数字字面值中的下划线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示转换"><span class="nav-number">2.5.</span> <span class="nav-text">显示转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算"><span class="nav-number">2.6.</span> <span class="nav-text">运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符"><span class="nav-number">2.7.</span> <span class="nav-text">字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔"><span class="nav-number">2.8.</span> <span class="nav-text">布尔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.9.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">2.10.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串字面值"><span class="nav-number">2.11.</span> <span class="nav-text">字符串字面值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串模板"><span class="nav-number">2.12.</span> <span class="nav-text">字符串模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包"><span class="nav-number">2.13.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶层声明可见性"><span class="nav-number">2.14.</span> <span class="nav-text">顶层声明可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制流"><span class="nav-number">2.15.</span> <span class="nav-text">控制流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if表达式"><span class="nav-number">2.16.</span> <span class="nav-text">if表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#when表达式"><span class="nav-number">2.17.</span> <span class="nav-text">when表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回和跳转"><span class="nav-number">2.18.</span> <span class="nav-text">返回和跳转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和对象"><span class="nav-number">3.</span> <span class="nav-text">类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类和继承"><span class="nav-number">3.1.</span> <span class="nav-text">类和继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性和字段"><span class="nav-number">3.2.</span> <span class="nav-text">属性和字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">3.3.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可见性修饰符"><span class="nav-number">3.4.</span> <span class="nav-text">可见性修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">3.5.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类"><span class="nav-number">3.6.</span> <span class="nav-text">数据类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密封类"><span class="nav-number">3.7.</span> <span class="nav-text">密封类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">3.8.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套类"><span class="nav-number">3.9.</span> <span class="nav-text">嵌套类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类"><span class="nav-number">3.10.</span> <span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">3.11.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#委托"><span class="nav-number">3.12.</span> <span class="nav-text">委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#委托属性"><span class="nav-number">3.13.</span> <span class="nav-text">委托属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数和Lambda"><span class="nav-number">4.</span> <span class="nav-text">函数和Lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">4.1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">4.2.</span> <span class="nav-text">Lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联函数"><span class="nav-number">4.3.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协程"><span class="nav-number">4.4.</span> <span class="nav-text">协程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">七水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("dMMmhdnJssUs5BAt2iEz21Hc-gzGzoHsz", "DUGbxFmv8YAeFzBvPxV1pQEl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
