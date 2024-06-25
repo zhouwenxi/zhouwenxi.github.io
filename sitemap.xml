@@ -2,57 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zhouwenxi.github.io/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouAboutMe/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouDeliciousFood/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouElectron/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouFeel/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouGoShopping/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouHealthy/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouSoftDocs/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouStudy/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouTravel/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhouwenxi.github.io/ZhouWebSite/</loc>
+         <lastmod>2024-06-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhouwenxi.github.io/ZhouWebSite/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</loc>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouWebSite/%E8%87%AA%E5%BB%BA%E7%BD%91%E7%AB%99/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
