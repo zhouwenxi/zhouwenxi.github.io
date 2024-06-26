@@ -2,82 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zhouwenxi.github.io/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouAboutMe/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouAboutMe/%E6%88%91%E7%9A%84%E4%B8%89%E8%A7%82/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhouwenxi.github.io/ZhouAboutMe/%E6%88%91%E7%9A%84%E7%85%A7%E7%89%87/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouAboutMe/%E8%81%94%E7%B3%BB%E6%88%91/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouDeliciousFood/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouElectron/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouFeel/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouGoShopping/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouHealthy/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouSoftDocs/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouStudy/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouStudy/%E8%80%83%E7%BC%96%E5%AD%A6%E4%B9%A0/%E8%A1%8C%E6%B5%8B/%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/ziliaofenxi/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhouwenxi.github.io/ZhouStudy/%E8%80%83%E7%BC%96%E5%AD%A6%E4%B9%A0/%E8%A1%8C%E6%B5%8B/%E8%B5%84%E6%96%99%E5%88%86%E6%9E%90/%E4%B9%A0%E9%A2%98/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouTravel/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouWebSite/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouWebSite/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhouwenxi.github.io/ZhouWebSite/%E8%87%AA%E5%BB%BA%E7%BD%91%E7%AB%99/</loc>
-         <lastmod>2024-06-25</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
